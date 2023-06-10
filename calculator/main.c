@@ -58,11 +58,32 @@ void power(void)
     printf("%d^%d=%lf", a, b, pow(a,b));
 }
 
+void average(void)
+{
+    int cnt=0, num, sum=0;
+    double avg;
+    char c;
+    printf("Enter the numbers (enter . to stop): ");
+    while(1) {
+        if(scanf("%d", &num) == 1) {
+            sum+=num;
+            cnt++;
+        }
+        else {
+            scanf("%c", &c);
+            if(c == '.')
+                break;
+        }
+    }
+    avg=(double)sum/cnt;
+    printf("avg = %lf", avg);
+}
+
 
 int main(void) {
     char operation;
     printf("\nWelcome to my calculator");
-    printf("\n\'+\'- addition\n\'-\'- subtraction\n\'*\'- multiplication\n\'/\'- division\n\'%%\'- modulus\n\'s\'- square root\n\'^\'- power of a number\n");
+    printf("\n\'+\'- addition\n\'-\'- subtraction\n\'*\'- multiplication\n\'/\'- division\n\'%%\'- modulus\n\'s\'- square root\n\'^\'- power of a number\n\'a\'- calculate the average\n");
     printf("\nChoose a calculator operation: ");
     scanf("%c", &operation);
     if(operation == '+') {
@@ -83,9 +104,11 @@ int main(void) {
     else if(operation == 's') {
         square_root();
     }
-    else if(operation == '^')
-    {
+    else if(operation == '^') {
         power();
+    }
+    else if(operation == 'a') {
+        average();
     }
     else {
         printf("Try again");
